@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .row {
+      display: flex;
+      width: 100%;
+    }
+
+    .col-1 {
+      flex-grow: 1;
+    }
+
+    .col-2 {
+      flex-grow: 2;
+    }
+
+    .col-3 {
+      flex-grow: 3;
+    }
+
+    .col-4 {
+      flex-grow: 4;
+    }
+  </style>
+</head>
+<body>
+<button id="reset">Reset</button>
+
+<conf-variables></conf-variables>
+
+<conf-atomo atomo="atomo-input">
+  <div slot="left">
+    <atomo-input></atomo-input>
+  </div>
+
+  <div slot="right">
+
+  </div>
+</conf-atomo>
+
+<conf-atomo atomo="atomo-button">
+  <div slot="left">
+    <atomo-button type="primary">Primary</atomo-button>
+    <atomo-button type="secondary">Secondary</atomo-button>
+    <atomo-button type="cancel">Cancel</atomo-button>
+  </div>
+
+  <div slot="right">
+    <conf-field type="size" atomo="atomo-button" variable="--border-radius"></conf-field>
+    <conf-field type="size" atomo="atomo-button" variable="--padding"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--font-weight"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--font-size"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--transition"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-button" variable="--primary-background"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--primary-color"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--primary-border"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--primary-background-hover"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--primary-color-hover"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--primary-border-hover"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-button" variable="--secondary-background"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--secondary-color"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--secondary-border"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--secondary-background-hover"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--secondary-color-hover"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--secondary-border-hover"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-button" variable="--cancel-background"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--cancel-color"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--cancel-border"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--cancel-background-hover"></conf-field>
+    <conf-field type="color" atomo="atomo-button" variable="--cancel-color-hover"></conf-field>
+    <conf-field type="text" atomo="atomo-button" variable="--cancel-border-hover"></conf-field>
+  </div>
+</conf-atomo>
+
+<script type="module" src="build/tests/index.js"></script>
+</body>
+</html>
