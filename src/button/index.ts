@@ -1,7 +1,9 @@
-import AtomoButton from "./button";
+import AtomoButton, {Type} from "./button"
+import {ActionEvent} from "./events"
 
 export interface Props {
-  type: "primary" | "secondary" | "cancel"
+  type: Type,
+  onAction: (event: ActionEvent) => void
 }
 
 customElements.define("atomo-button", AtomoButton)
