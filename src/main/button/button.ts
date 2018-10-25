@@ -1,11 +1,19 @@
 import {ActionEvent} from "./events"
-import {styles, variable} from "../styles/index"
-import {Declaration} from "../styles/declaration";
+import {styles, variable, Declaration} from "../styles"
+import { html, render } from "../../../node_modules/lit-html/lit-html"
+import * as CSS from "csstype";
+
+export interface Props {
+  type: Type
+  onAction?: (event: ActionEvent) => void
+}
 
 export type Type = "primary" | "secondary" | "cancel"
 const types: Array<Type> = ["primary", "secondary", "cancel"]
 
 export default class AtomoButton extends HTMLElement {
+  private readonly shadow: ShadowRoot
+
   private get type(): string | undefined {
     return this.getAttribute("type") || undefined
   }
@@ -13,11 +21,8 @@ export default class AtomoButton extends HTMLElement {
   constructor() {
     super()
 
-    const shadow = this.attachShadow({mode: "open"})
-    shadow.innerHTML = this.render()
-
-    shadow.querySelectorAll("button")
-      .forEach(button => button.addEventListener("click", () => this.onAction()))
+    this.shadow = this.attachShadow({mode: "open"})
+    this.render()
   }
 
   onAction() {
@@ -27,12 +32,16 @@ export default class AtomoButton extends HTMLElement {
   }
 
   render() {
-    return `
-${renderStyles()}
-<button class="${this.type}">
-  <slot></slot>
-</button>
+    const content = html`
+      <style>
+        ${renderStyles()}      
+      </style>
+      
+      <button class="${this.type}" @click=${() => this.onAction()}>
+        <slot></slot>
+      </button>
     `
+    render(content, this.shadow)
   }
 }
 
@@ -42,7 +51,7 @@ function renderStyles() {
       cursor: "pointer",
       borderRadius: variable("border-radius", "0"),
       padding: variable("padding", "16px"),
-      fontWeight: variable("font-weight", "300"),
+      fontWeight: variable("font-weight", 300),
       fontSize: variable("font-size"),
       transition: variable("transition")
     }
@@ -51,13 +60,13 @@ function renderStyles() {
   const declaration = types.reduce((acc, type) => ({
     ...acc,
     [`.${type}`]: {
-      backgroundColor: variable(`${type}-background`),
-      color: variable(`${type}-color`),
+      backgroundColor: variable<CSS.BackgroundColorProperty>(`${type}-background`),
+      color: variable<CSS.ColorProperty>(`${type}-color`),
       border: variable(`${type}-border`, "none")
     },
     [`.${type}:hover`]: {
-      backgroundColor: variable(`${type}-background-hover`, variable(`${type}-background`)),
-      color: variable(`${type}-color-hover`, variable(`${type}-color`)),
+      backgroundColor: variable<CSS.BackgroundColorProperty>(`${type}-background-hover`, variable(`${type}-background`)),
+      color: variable<CSS.ColorProperty>(`${type}-color-hover`, variable(`${type}-color`)),
       border: variable(`${type}-border-hover`, variable(`${type}-border`))
     }
   }), initialDeclaration)

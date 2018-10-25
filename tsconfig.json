@@ -7,17 +7,12 @@
       "dom",
       "es6"
     ],
+    "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "build",
-    "paths": {
-      "fluxx": [
-        "build/fluxx"
-      ]
-    },
     "rootDirs": [
-      "src",
-      "tests"
+      "src/main"
     ],
     "skipLibCheck": true,
     "sourceMap": true,
@@ -28,8 +23,6 @@
   },
   "include": [
     "src/**/*",
-    "tests/**/*",
-    "typings/**/*",
-    "node_modules/fluxx/*"
+    "typings/**/*"
   ]
 }
