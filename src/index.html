@@ -1,0 +1,593 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Atomo</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i" rel="stylesheet">
+  <style>
+    body {
+      max-width: 1200px;
+      margin: auto;
+      font-family: 'Roboto', Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    h1 {
+      font-weight: 300;
+      font-size: 6rem;
+      letter-spacing: -0.1rem;
+    }
+
+    h2 {
+      font-weight: 300;
+      font-size: 3.75rem;
+      letter-spacing: -0.03rem;
+    }
+
+    h3 {
+      font-weight: 400;
+      font-size: 3rem;
+      letter-spacing: 0;
+    }
+
+    h4 {
+      font-weight: 400;
+      font-size: 2.125rem;
+      letter-spacing: 0.015rem;
+    }
+
+    p, ul {
+      font-size: 1.125rem;
+      font-weight: 300;
+      line-height: 1.5rem;
+    }
+
+    .do {
+      color: #2e7b32;
+    }
+
+    .dont {
+      color: #d32f2f;
+    }
+
+    .row {
+      display: flex;
+      width: 100%;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    .col:not(:last-child) {
+      margin-right: 1rem;
+    }
+  </style>
+</head>
+<body>
+<h1>Atomo</h1>
+
+<p>
+  Simple project to help developers build components for their final project (not a library).
+</p>
+
+<h2>Summary</h2>
+
+<nav>
+  <ul>
+    <li><a href="#about">About this project</a></li>
+    <li><a href="#disclaimer">Disclaimer</a></li>
+    <li><a href="#general-design">General design</a></li>
+    <li><a href="#atomo-button">Button</a></li>
+    <li><a href="#atomo-icon">Icon</a></li>
+  </ul>
+</nav>
+
+<section aria-labelledby="about">
+  <h2 id="about">About this project</h2>
+
+  <p>
+    The objective of this project is not to give a complete set of components ready to use in production.
+    Instead, it focuses on best practices (structure, i18n, a11y, tips) to build valid components.
+  </p>
+</section>
+
+<section aria-labelledby="disclaimer">
+  <h2 id="disclaimer">Disclaimer</h2>
+
+  <p>
+    I do not know everything and what I say in this document and repository is the result of my experience and learning.
+    It could miss some important features and notions.
+    In this case, please open an issue or pull-request to improve it.
+  </p>
+
+  <p>
+    I have a very opinionated view of components for <strong>final projects</strong>.
+    Mostly, I am against fully configurable components that all leaked to technical debt in my experience.
+    This opinion will impact lots of the design of components.
+    I try to give the reasons of my decisions so you can form your own opinion.
+    I am open to discussion, so do not hesitate to contact me or open issues.
+  </p>
+</section>
+
+<section aria-labelledby="general-design">
+  <h2 id="general-design">General design</h2>
+
+  <p>
+    When designing components, following general rules applies.
+  </p>
+
+  <h3>Be as restrictive as possible</h3>
+
+  <p>
+    Give the least possibilities to the developer to change the component.
+    As soon as you give them some freedom, they will take it and transform the logic of the component.
+  </p>
+
+  <p>
+    For instance, imagine a <code>button</code> component.
+    You accept a <code>&lt;slot&gt;</code> for the content of the component.
+    Also, you accept a <code>class</code> attribute so the developer can style the button as s·he wants.
+    What will happen?
+  </p>
+
+  <p>
+    Some structure will be duplicated (ex: button with icon, colors, sizes) and not always the same way.
+    Even though some developers will try to factorize button styles, there will always a case where it is not done
+    right.
+    When you would want to change some style, you will end up changing the whole application.
+  </p>
+
+  <p>
+    To avoid this case, the only thing to do is to restrict the developer.
+
+  </p>
+
+  <p>
+    And by doing so, you also force the designer to be aware of the restriction.
+    When the developer will have an impossibility to make changes without changing the component,
+    it will be an alert to check whether the design is coherent with the existing.
+    And if so, the component should be rethought.
+  </p>
+
+  <p>
+    Only when an abstraction can be made and a restrictive one, you can update the component to accept this abstraction.
+    For example, our button can be an <code>icon-button</code> but the <code>icon</code> name can be given by the
+    parent.
+  </p>
+
+  <h3>Use of css-variables</h3>
+
+  <p>
+    We use a lot of css-variables.
+    Not because they are cool (even if they are) but because they help to define several stylesheets.
+  </p>
+
+  <p>
+    For instance, if you want to see with your designer the configuration of the component,
+    you can use a simple UI-kit like <code>uikit.html</code>.
+    Also, if you want to define several stylesheets (day/night modes, accessibility mode, …),
+    it will be easier to have all your variables in a global definition.
+  </p>
+
+  <p>
+    Of course, these exist for specific use case and can be simplified or extended depending on your own needs.
+    They mainly exist for demonstration purpose.
+  </p>
+</section>
+
+<section aria-labelledby="atomo-button">
+  <h2 id="atomo-button">Button</h2>
+
+  <p>
+    Represents a clickable element to trigger a specific action.
+  </p>
+
+  <h3>How to configure it</h3>
+
+  <h4>Types of buttons</h4>
+
+  <p>
+    Before configuring the component, list all types of buttons you have in your application.
+    Here some examples (non-exhaustive):
+  </p>
+
+  <ul>
+    <li>Submit</li>
+    <li>Cancel</li>
+    <li>Previous</li>
+    <li>Next</li>
+    <li>Share</li>
+    <li>Add</li>
+    <li>Remove</li>
+    <li>Mute</li>
+  </ul>
+
+  <h4>States of buttons</h4>
+
+  <p>
+    Each type of button can have several states (non-exhaustive and some could be non-relevant in your case):
+  </p>
+
+  <ul>
+    <li>Default</li>
+    <li>
+      Manual states:
+      <ul>
+        <li>Disabled (when the button cannot be clicked <code>:disabled</code>)</li>
+        <li>Pressed (for buttons having two distinct states like a mute button, <code>[aria-pressed]</code>)</li>
+        <li>Error (when the action did not end well, <code>.error</code>)</li>
+        <li>Success (when the action did end well, <code>.success</code>)</li>
+        <li>Warning (when the action ended but with a warning, <code>.warning</code>)</li>
+      </ul>
+    </li>
+    <li>
+      Browser states:
+      <ul>
+        <li>Hover (non existing in phone and tablet, <code>:hover</code>)</li>
+        <li>Active (when clicking but not released, <code>:active</code>)</li>
+        <li>Focused (as an input, not always existing, <code>:focus</code>)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>
+    ⚠️ Technically, these states could be mixed in between the manual state and the browser state.
+    When implementing styles and behavior, be aware of these edge cases.
+    For instance, while your button is <em>pressed</em> (with toggle button), the user can <em>active</em> it too.
+    The choice of which style overrides the other is up to you.
+  </p>
+
+  <h4>Difference between <em>type</em> and <em>state</em></h4>
+
+  <p>
+    The difference between <em>type</em> and <em>state</em> could not be obvious.
+    However, there is a fundamental difference.
+  </p>
+
+  <p>
+    A type of button cannot change during the use of the application.
+    The <em>next</em> button will always be the <em>next</em> button.
+    It cannot transform into a <em>previous</em> or <em>share</em> button.
+  </p>
+
+  <p>
+    However, its state can change.
+    The <em>next</em> button can be <em>disabled</em> while the form is invalid.
+    Then it becomes <em>active</em> and once the form sent, be <em>error</em> or <em>success</em> depending on the
+    result.
+  </p>
+
+  <p>
+    Said simply: the <em>type</em> never change but the <em>state</em> does.
+  </p>
+
+  <h4>In this project</h4>
+
+  <p>
+    We determined two categories for buttons: <code>text-button</code> and <code>icon-button</code>.
+    The first one will be used for text buttons with an optional icon and the other for icon-only buttons.
+    This choice could be convenient or not to you.
+  </p>
+
+  <p>
+    To add types in the text categories, go to <code>button/api.ts</code> and change <code>textButtonTypes</code>.
+    For the icon category, the code directly uses <code>iconTypes</code> from <code>icon/api.ts</code>.
+  </p>
+
+  <p>
+    To add states in all categories, go to <code>button/api.ts</code> and change <code>states</code>.
+  </p>
+
+  <p>
+    To change the style of the button, look at <code>AtomoTextButton.renderStyles</code> and <code>AtomoIconButton.renderStyles</code>.
+  </p>
+
+  <p>
+    Available css variables are the following:
+  </p>
+
+  <ul>
+    <li><code>--cursor</code></li>
+    <li><code>--border-radius</code></li>
+    <li><code>--padding</code></li>
+    <li><code>--font-weight</code></li>
+    <li><code>--font-size</code></li>
+    <li><code>--transition</code></li>
+    <li><code>--{type}-background</code>: Background color in normal state</li>
+    <li><code>--{type}-color</code>: Text color in normal state</li>
+    <li><code>--{type}-border</code>: Border in normal state</li>
+    <li><code>--{type}-background-{state}</code>: Background color in {state} state</li>
+    <li><code>--{type}-color-{state}</code>: Text color in {state} state</li>
+    <li><code>--{type}-border-{state}</code>: Border in {state} state</li>
+  </ul>
+
+  <p>
+    Update the code with your own needs for more control.
+  </p>
+
+  <h3>Internationalization</h3>
+
+  <p>
+    If you want to use or update the component, think about:
+  </p>
+
+  <ul>
+    <li>Colors: The meaning per country and region</li>
+    <li>Icons and their position: In left-to-right texts, right-to-left texts…</li>
+    <li>Labels (shown and hidden)</li>
+  </ul>
+
+  <h3>Accessibility</h3>
+
+  <p>
+    If you want to use or update the component, think about:
+  </p>
+
+  <ul>
+    <li>
+      A label for button without text
+      (ex: for screen readers,
+      a <code>title</code> attribute could be enough using firefox dev tools but need confirmation)
+    </li>
+    <li>Colors and contrast of buttons (ex: for people with visual disabilities)</li>
+    <li>Discriminants for different button types (ex: different colors for colorblind people)</li>
+    <li>Size of button (ex: mobiles)</li>
+    <li>Usage of html attributes (<code>disabled</code>, <code>type</code>)</li>
+  </ul>
+
+  <h3>Best practices</h3>
+
+  <div class="row">
+    <div class="col">
+      <h3 class="do">Do</h3>
+
+      <h4 class="do">One component per category</h4>
+
+      <p>
+        Like done with <code>atomo-button</code>, you can have one button component per category.
+        For instance, you can have a <code>text-button</code> and an <code>icon-button</code>.
+        Each category will render the button in some way that could be very different from one another.
+        It will differs from <code>type</code> which styles will be small enough.
+      </p>
+
+      <p>
+        For instance, the <code>icon-button</code> could hide the label (but keep it for accessibility reasons) and have
+        a circular form.
+        Then the type could define the shown icon and its background-color.
+      </p>
+
+      <p>
+        On the contrary, the <code>text-button</code> could always show the label, have an optional icon and have a
+        rectangular form.
+        Then the type could define the color and background-color and the icon to show.
+      </p>
+
+      <h4 class="do">Use specific names</h4>
+
+      <p>
+        Usage of specific names like <code>submis</code> or <code>cancel</code> gives more information of how to use them.
+        Use them and multiply them, it will simplify the decision of a type or state for future developer.
+      </p>
+
+      <p>
+        Framework often use terms like <code>primary</code> and <code>secondary</code>.
+        If they have meanings for you, keep them.
+        Otherwise, do not hesitate to change them to names that have meaning for your project.
+      </p>
+    </div>
+
+    <div class="col">
+      <h3 class="dont">Don't</h3>
+
+      <h4 class="dont">Give the possibility to add an external class name</h4>
+
+      <p>
+        If you give this possibility, developers will use it and duplicate logic.
+        Also, it will bring inconsistency in you application.
+      </p>
+
+      <p>
+        If a button need a specific style, check if it enters in a defined category and if a type can be defined.
+        In the other case, check if it is a new category and other buttons enter into it.
+      </p>
+
+      <p>
+        Prefer checking with a designer before adding a type of button.
+        It could be a mistake or a new notion that could be made explicit.
+      </p>
+
+      <h4 class="dont">Use a button as a link</h4>
+
+      <p>
+        Do not use a <code>button</code> that should behave like a link (<code>&lt;a&gt;</code>).
+        A button means doing an action and a link means going to a page.
+        An action can redirect to a page but as a side effect of the action, not as the objective.
+      </p>
+
+      <p>
+        If you need a link rendered as a button, create a new component using to use html <code>&lt;a&gt;</code>.
+        Whether you define this component as a button or a link is your choice.
+        However, the technical element should remains semantically valid.
+      </p>
+    </div>
+  </div>
+
+  <h3>Links</h3>
+
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button</a></li>
+    <li><a href="https://www.w3.org/WAI/tutorials/forms/labels/#labelling-buttons">https://www.w3.org/WAI/tutorials/forms/labels/#labelling-buttons</a></li>
+  </ul>
+
+  <h3>Example</h3>
+
+  <h4>Text buttons</h4>
+
+  <atomo-text-button type="submit" state="normal" label="Cancel"></atomo-text-button>
+  <atomo-text-button type="cancel" state="normal" label="Add" left-icon="plus"></atomo-text-button>
+  <atomo-text-button type="previous" state="normal" label="Add" right-icon="plus"></atomo-text-button>
+  <atomo-text-button type="next" state="normal" label="Add" left-icon="plus" right-icon="plus"></atomo-text-button>
+  <atomo-text-button type="submit" state="disabled"></atomo-text-button>
+
+  <h4>Icon buttons</h4>
+
+  <atomo-icon-button type="plus" state="normal" label="Add something"></atomo-icon-button>
+  <atomo-icon-button type="plus" state="disabled" label="Add something"></atomo-icon-button>
+</section>
+
+<section aria-labelledby="atomo-icon">
+  <h2 id="atomo-icon">Icon</h2>
+
+  <p>Shows an icon with different sizes</p>
+
+  <h3>How to configure it</h3>
+
+  <h4>Sizes</h4>
+
+  <p>
+    Update type <code>IconSize</code> in <code>icon/api.ts</code> with your own list of sizes.
+    Then update the mapping <code>sizes</code> in <code>icon/icon.ts</code>.
+  </p>
+
+  <h4>Icon format</h4>
+
+  <p>
+    Sometimes, you can have several formats for your icon (white / black, primary / secondary, …).
+    You can either declare the variants as a different type (ex: <code>&lt;icon type="plus-white"&gt;</code>)
+    or as a type with a variant (ex: <code>&lt;icon type="plus" variant="white"&gt;</code>).
+  </p>
+
+  <h4>Declaration of icons</h4>
+
+  <p>
+    This project uses a simple javascript function returning a <code>svg</code> element (with <code>lit-html</code>).
+    However, it is not an obligation and will depends on several causes (tooling, technical format of the icon, …).
+  </p>
+
+  <h3>Internationalization</h3>
+
+  <p>
+    If you want to use or update the component, think about:
+  </p>
+
+  <ul>
+    <li>Colors and forms: The meaning per country and region</li>
+    <li>Give a translated title and a description to your icon</li>
+    <li>Avoid using icons without another text to describe them (or make the context explicit)</li>
+  </ul>
+
+  <h3>Accessibility</h3>
+
+  <p>
+    If you want to use or update the component, think about:
+  </p>
+
+  <ul>
+    <li>Clear label and description for your icon (title and description in svg, alt text for image)</li>
+    <li>Colors and contrast of icons and their usage in other components (ex: buttons)</li>
+    <li>Size of the icon</li>
+    <li>Having icon different enough to avoid confusion</li>
+  </ul>
+
+  <h3>Best practices</h3>
+
+  <div class="row">
+    <div class="col">
+      <h3 class="do">Do</h3>
+
+      <h4 class="do">Prefer SVG</h4>
+
+      <p>
+        Prefer SVG over other formats.
+        You can give information like a title and a description readable by screen readers.
+        They can be stylized with css without be forced to create another file.
+        Also, they often end up having a lower size.
+      </p>
+    </div>
+
+    <div class="col">
+      <h3 class="dont">Don't</h3>
+
+      <h4 class="dont">Replace all texts with icons</h4>
+
+      <p>
+        Icons give graphical information and help with people with dyslexia.
+        However, they also remove clear information that a text can bring.
+        Prefer having both (icon and text) instead of only icons.
+      </p>
+    </div>
+  </div>
+
+  <h3>Example</h3>
+
+  <atomo-icon type="plus" size="small" description="Add nothing for the example"></atomo-icon>
+  <atomo-icon type="plus" size="medium" description="Add nothing for the example"></atomo-icon>
+  <atomo-icon type="plus" size="large" description="Add nothing for the example"></atomo-icon>
+
+  <h3>Links</h3>
+
+  <ul>
+    <li><a href="https://www.w3.org/WAI/tutorials/images/">https://www.w3.org/WAI/tutorials/images/</a></li>
+  </ul>
+</section>
+
+<!--
+Default structure of document:
+
+<section aria-labelledby="atomo-{ component }">
+  <h2 id="atomo-{ component }">{ component }</h2>
+
+  <p>{ short description: what is it and its purpose }</p>
+
+  <h3>How to configure it</h3>
+
+  { Explain how to configure the component, either by using css or js }
+
+  <h3>Internationalization</h3>
+
+  { What to take into account about internationalization in this component }
+
+  <h3>Accessibility</h3>
+
+  { What are the accessibility elements to take into account and the one already implemented }
+
+  <h3>Best practices</h3>
+
+  { Explain the best practices vs bad practices and the reason behind them }
+
+  <div class="row">
+    <div class="col">
+      <h3 class="do">Do</h3>
+
+
+    </div>
+
+    <div class="col">
+      <h3 class="dont">Don't</h3>
+
+
+    </div>
+  </div>
+
+  <h3>{ more information }</h3>
+
+  { If you have more information to give }
+
+  <h3>Example</h3>
+
+  { Because it is always nice to have an example }
+
+  <h3>Links</h3>
+
+  { If you have some links to give about it }
+</section>
+-->
+</body>
+</html>

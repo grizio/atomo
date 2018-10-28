@@ -48,5 +48,5 @@ function renderAtomoj(atomoj: Array<AtomoConfiguration>): string {
     return `${atomoConfiguration.name} {${
       renderVariables(atomoConfiguration.variables)
     }}`
-  }).join()
+  }).join("")
 }

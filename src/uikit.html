@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UI kit</title>
+</head>
+<body>
+<button id="reset">Reset</button>
+
+<conf-variables></conf-variables>
+
+<conf-atomo atomo="atomo-text-button">
+  <div slot="left">
+    <h3>Submit button</h3>
+
+    <atomo-text-button type="submit" state="normal" label="normal"></atomo-text-button>
+    <atomo-text-button type="submit" state="disabled" label="normal"></atomo-text-button>
+    <atomo-text-button type="submit" state="normal" label="normal" left-icon="plus"></atomo-text-button>
+    <atomo-text-button type="submit" state="disabled" label="normal" right-icon="plus"></atomo-text-button>
+  </div>
+
+  <div slot="right">
+    <conf-field type="text" atomo="atomo-text-button" variable="--cursor"></conf-field>
+    <conf-field type="size" atomo="atomo-text-button" variable="--border-radius"></conf-field>
+    <conf-field type="size" atomo="atomo-text-button" variable="--padding"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--font-weight"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--font-size"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--transition"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-background"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-color"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--submit-border"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-disabled"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-disabled"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-disabled"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-hover"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-hover"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-hover"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-active"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-active"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-active"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-focus"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-focus"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-focus"></conf-field>
+  </div>
+</conf-atomo>
+</body>
+</html>

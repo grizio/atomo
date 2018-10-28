@@ -1,4 +1,3 @@
-import "../main/all"
 import "./components"
 import store from "./store"
 import "./styleRenderer"
