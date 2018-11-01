@@ -51,5 +51,76 @@
     <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-focus"></conf-field>
   </div>
 </conf-atomo>
+
+<conf-atomo atomo="atomo-input-text">
+  <div slot="left">
+    <h3>Input text</h3>
+
+    <atomo-input-text
+        id="input-text-1"
+        name="test-1"
+        label="Field 1"
+        state="normal"
+        placeholder="First field"
+    ></atomo-input-text>
+
+    <atomo-input-text
+        id="input-text-2"
+        name="test-2"
+        label="Field 2"
+        state="error"
+        placeholder="Second field"
+    ></atomo-input-text>
+
+    <atomo-input-text
+        id="input-text-3"
+        name="test-3"
+        label="Field 3"
+        state="disabled"
+        placeholder="Third field"
+        value="Some text disabled"
+    ></atomo-input-text>
+
+    <atomo-input-text
+        id="input-text-4"
+        name="test-4"
+        label="Field 4"
+        state="readonly"
+        placeholder="Fourth field"
+        value="Some text read only"
+    ></atomo-input-text>
+  </div>
+
+  <div slot="right">
+    <conf-field type="color" atomo="atomo-input-text" variable="--background-color"></conf-field>
+    <conf-field type="text" atomo="atomo-input-text" variable="--border"></conf-field>
+    <conf-field type="size" atomo="atomo-input-text" variable="--border-radius"></conf-field>
+    <conf-field type="color" atomo="atomo-input-text" variable="--color"></conf-field>
+    <conf-field type="size" atomo="atomo-input-text" variable="--font-size"></conf-field>
+    <conf-field type="size" atomo="atomo-input-text" variable="--margin"></conf-field>
+    <conf-field type="size" atomo="atomo-input-text" variable="--padding"></conf-field>
+    <conf-field type="text" atomo="atomo-input-text" variable="--transition"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-error"></conf-field>
+    <conf-field type="text" atomo="atomo-input-text" variable="--border-error"></conf-field>
+    <conf-field type="color" atomo="atomo-input-text" variable="--color-error"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-disabled"></conf-field>
+    <conf-field type="text" atomo="atomo-input-text" variable="--border-disabled"></conf-field>
+    <conf-field type="color" atomo="atomo-input-text" variable="--color-disabled"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-readonly"></conf-field>
+    <conf-field type="text" atomo="atomo-input-text" variable="--border-readonly"></conf-field>
+    <conf-field type="color" atomo="atomo-input-text" variable="--color-readonly"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-hover"></conf-field>
+    <conf-field type="text" atomo="atomo-input-text" variable="--border-hover"></conf-field>
+    <conf-field type="color" atomo="atomo-input-text" variable="--color-hover"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-focus"></conf-field>
+    <conf-field type="text" atomo="atomo-input-text" variable="--border-focus"></conf-field>
+    <conf-field type="color" atomo="atomo-input-text" variable="--color-focus"></conf-field>
+  </div>
+</conf-atomo>
 </body>
 </html>

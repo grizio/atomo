@@ -1,25 +1,25 @@
 import * as CSS from "csstype"
-import {html} from "lit-html"
 
 import AtomoElement from "helpers/AtomoElement"
-import {identity, optionalEnumeration, requiredEnumeration} from "helpers/normalizers"
+import {optionalEnumeration, required, requiredEnumeration} from "helpers/normalizers"
+import {html} from "lit-html"
 import {styles, variable} from "styles"
+import {Icon, iconTypes} from "../icon/api"
 
 import {ActionEvent, states, TextButtonProps, textButtonTypes} from "./api"
-import {Icon, iconTypes} from "../icon/api";
 
 export default class AtomoTextButton extends AtomoElement<TextButtonProps, {}> {
   constructor() {
-    super(
-      {
+    super({
+      props: {
         type: requiredEnumeration(textButtonTypes),
         state: requiredEnumeration(states),
-        label: identity(),
+        label: required(),
         leftIcon: optionalEnumeration(iconTypes),
         rightIcon: optionalEnumeration(iconTypes)
       },
-      {}
-    )
+      state: {}
+    })
   }
 
   onAction() {

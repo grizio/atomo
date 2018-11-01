@@ -15,14 +15,14 @@ const sizes: Sizes = {
 
 export default class AtomoIcon extends AtomoElement<IconProps, {}> {
   constructor() {
-    super(
-      {
+    super({
+      props: {
         type: requiredEnumeration(iconTypes),
         description: identity(),
         size: requiredEnumeration(iconSizes)
       },
-      {}
-    )
+      state: {}
+    })
   }
 
   render({type, description, size}: IconProps) {
