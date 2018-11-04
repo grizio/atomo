@@ -1,5 +1,6 @@
 import AtomoElement from "helpers/AtomoElement"
 import {identity, requiredEnumeration} from "helpers/normalizers"
+import {Declaration} from "../styles"
 
 import {IconProps, IconSize, iconSizes, iconTypes} from "./api"
 import {icons} from "./icons";
@@ -30,5 +31,9 @@ export default class AtomoIcon extends AtomoElement<IconProps, {}> {
       size: sizes[size],
       description: description
     })
+  }
+
+  renderStyles(): Declaration {
+    return {};
   }
 }

@@ -16,10 +16,39 @@
   <div slot="left">
     <h3>Submit button</h3>
 
-    <atomo-text-button type="submit" state="normal" label="normal"></atomo-text-button>
-    <atomo-text-button type="submit" state="disabled" label="normal"></atomo-text-button>
-    <atomo-text-button type="submit" state="normal" label="normal" left-icon="plus"></atomo-text-button>
-    <atomo-text-button type="submit" state="disabled" label="normal" right-icon="plus"></atomo-text-button>
+    <div>
+      <atomo-text-button type="submit" state="normal" label="normal"></atomo-text-button>
+      <atomo-text-button type="submit" state="disabled" label="normal"></atomo-text-button>
+      <atomo-text-button type="submit" state="normal" label="normal" left-icon="plus"></atomo-text-button>
+      <atomo-text-button type="submit" state="disabled" label="normal" right-icon="plus"></atomo-text-button>
+    </div>
+
+    <h3>Cancel button</h3>
+
+    <div>
+      <atomo-text-button type="cancel" state="normal" label="cancel"></atomo-text-button>
+      <atomo-text-button type="cancel" state="disabled" label="cancel"></atomo-text-button>
+      <atomo-text-button type="cancel" state="normal" label="cancel" left-icon="plus"></atomo-text-button>
+      <atomo-text-button type="cancel" state="disabled" label="cancel" right-icon="plus"></atomo-text-button>
+    </div>
+
+    <h3>Previous button</h3>
+
+    <div>
+      <atomo-text-button type="previous" state="normal" label="previous"></atomo-text-button>
+      <atomo-text-button type="previous" state="disabled" label="previous"></atomo-text-button>
+      <atomo-text-button type="previous" state="normal" label="previous" left-icon="plus"></atomo-text-button>
+      <atomo-text-button type="previous" state="disabled" label="previous" right-icon="plus"></atomo-text-button>
+    </div>
+
+    <h3>Next button</h3>
+
+    <div>
+      <atomo-text-button type="next" state="normal" label="next"></atomo-text-button>
+      <atomo-text-button type="next" state="disabled" label="next"></atomo-text-button>
+      <atomo-text-button type="next" state="normal" label="next" left-icon="plus"></atomo-text-button>
+      <atomo-text-button type="next" state="disabled" label="next" right-icon="plus"></atomo-text-button>
+    </div>
   </div>
 
   <div slot="right">
@@ -49,6 +78,66 @@
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-focus"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-focus"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-focus"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background-disabled"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color-disabled"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border-disabled"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background-hover"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color-hover"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border-hover"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background-active"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color-active"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border-active"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background-focus"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color-focus"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border-focus"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-background"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-color"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--previous-border"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-background-disabled"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-color-disabled"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--previous-border-disabled"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-background-hover"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-color-hover"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--previous-border-hover"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-background-active"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-color-active"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--previous-border-active"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-background-focus"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--previous-color-focus"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--previous-border-focus"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-background"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-color"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--next-border"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-background-disabled"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-color-disabled"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--next-border-disabled"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-background-hover"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-color-hover"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--next-border-hover"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-background-active"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-color-active"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--next-border-active"></conf-field>
+    <hr/>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-background-focus"></conf-field>
+    <conf-field type="color" atomo="atomo-text-button" variable="--next-color-focus"></conf-field>
+    <conf-field type="text" atomo="atomo-text-button" variable="--next-border-focus"></conf-field>
   </div>
 </conf-atomo>
 

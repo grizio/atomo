@@ -3,7 +3,7 @@ import * as CSS from "csstype"
 import AtomoElement from "helpers/AtomoElement"
 import {optionalEnumeration, required, requiredEnumeration} from "helpers/normalizers"
 import {html} from "lit-html"
-import {styles, variable} from "styles"
+import {Declaration, variable} from "styles"
 import {Icon, iconTypes} from "../icon/api"
 
 import {ActionEvent, states, TextButtonProps, textButtonTypes} from "./api"
@@ -29,9 +29,6 @@ export default class AtomoTextButton extends AtomoElement<TextButtonProps, {}> {
   render(props: TextButtonProps) {
     const stateClass = props.state === "disabled" ? "" : props.state
     return html`
-<style>
-  ${this.renderStyles(props)}
-</style>
 <button
   class="${props.type} ${stateClass}"
   ?disabled=${props.state === "disabled"}
@@ -44,11 +41,15 @@ export default class AtomoTextButton extends AtomoElement<TextButtonProps, {}> {
 `
   }
 
-  renderStyles({ type }: TextButtonProps) {
-    return styles({
+  renderStyles({ type }: TextButtonProps): Declaration {
+    return {
+      ":host": {
+        display: "inline-block"
+      },
       "button": {
+        width: "100%",
         cursor: variable("cursor", "pointer"),
-        borderRadius: variable("border-radius", "0"),
+        borderRadius: variable("border-radius", 0),
         padding: variable("padding", "16px"),
         fontWeight: variable("font-weight", 300),
         fontSize: variable("font-size"),
@@ -66,7 +67,7 @@ export default class AtomoTextButton extends AtomoElement<TextButtonProps, {}> {
       [`.${type}:hover`]: this.renderStateStyle("hover", type),
       [`.${type}:active`]: this.renderStateStyle("active", type),
       [`.${type}:focus`]: this.renderStateStyle("focus", type)
-    })
+    }
   }
 
   renderStateStyle(name: string, type: string): CSS.Properties {

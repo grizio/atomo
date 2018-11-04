@@ -2,7 +2,7 @@ import * as CSS from "csstype"
 import AtomoElement from "helpers/AtomoElement"
 import {html} from "lit-html"
 import {identity, number, required, requiredEnumeration} from "../helpers/normalizers"
-import {styles, variable} from "../styles"
+import {Declaration, variable} from "../styles"
 
 import {TextInputProps, textInputStates} from "./api"
 
@@ -36,9 +36,6 @@ export default class AtomoInputText extends AtomoElement<TextInputProps, State> 
     const {internalValue} = internalState
 
     return html`
-      <style>
-        ${this.renderStyles()}
-      </style>
       <div class="container">
         <label for=${id}>${label}</label>
         <input
@@ -56,8 +53,8 @@ export default class AtomoInputText extends AtomoElement<TextInputProps, State> 
     `
   }
 
-  renderStyles() {
-    return styles({
+  renderStyles(): Declaration {
+    return {
       ".container": {
         display: "flex",
         flexDirection: "column",
@@ -78,7 +75,7 @@ export default class AtomoInputText extends AtomoElement<TextInputProps, State> 
       ["input[readonly]"]: this.renderStateStyle("readonly"),
       ["input:hover"]: this.renderStateStyle("hover"),
       ["input:focus"]: this.renderStateStyle("focus")
-    })
+    }
   }
 
   renderStateStyle(name: string): CSS.Properties {

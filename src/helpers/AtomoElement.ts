@@ -1,4 +1,5 @@
-import {render, TemplateResult} from "lit-html"
+import {html, render, TemplateResult} from "lit-html"
+import {Declaration, styles} from "../styles"
 
 export type PropsNormalizer<P> = {
   [K in keyof P]: Normalizer<P[K]>
@@ -30,7 +31,10 @@ export default abstract class AtomoElement<Props extends {}, State extends {}> e
   }
 
   private doRender() {
-    const result = this.render(this.getProps(), this.state)
+    const props = this.getProps()
+    const declaration = this.renderStyles(props, this.state)
+    const body = this.render(props, this.state)
+    const result = html`<style>${styles(declaration)}</style>${body}`
     render(result, this.shadow)
   }
 
@@ -77,4 +81,6 @@ export default abstract class AtomoElement<Props extends {}, State extends {}> e
   }
 
   abstract render(props: Props, state: State): TemplateResult
+
+  abstract renderStyles(props: Props, state: State): Declaration
 }

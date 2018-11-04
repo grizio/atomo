@@ -3,7 +3,7 @@ import * as CSS from "csstype"
 import AtomoElement from "helpers/AtomoElement"
 import {required, requiredEnumeration} from "helpers/normalizers"
 import {html} from "lit-html"
-import {styles, variable} from "styles"
+import {Declaration, variable} from "styles"
 import {Icon, iconTypes} from "../icon/api"
 
 import {ActionEvent, IconButtonProps, states} from "./api"
@@ -27,9 +27,6 @@ export default class AtomoIconButton extends AtomoElement<IconButtonProps, {}> {
   render(props: IconButtonProps) {
     const stateClass = props.state === "disabled" ? "" : props.state
     return html`
-<style>
-  ${this.renderStyles(props)}
-</style>
 <button
   type="button"
   class="${props.type} ${stateClass}"
@@ -42,8 +39,8 @@ export default class AtomoIconButton extends AtomoElement<IconButtonProps, {}> {
 `
   }
 
-  renderStyles({type}: IconButtonProps) {
-    return styles({
+  renderStyles({type}: IconButtonProps): Declaration {
+    return {
       "button": {
         cursor: "pointer",
         borderRadius: variable("border-radius", "0"),
@@ -60,7 +57,7 @@ export default class AtomoIconButton extends AtomoElement<IconButtonProps, {}> {
       [`.${type}:hover`]: this.renderStateStyle("hover", type),
       [`.${type}:active`]: this.renderStateStyle("pressed", type),
       [`.${type}:focus`]: this.renderStateStyle("focus", type)
-    })
+    }
   }
 
   renderStateStyle(name: string, type: string): CSS.Properties {
