@@ -62,7 +62,6 @@ export default class ConfVariables extends HTMLElement {
   render() {
     return `
 <div>
-  <h1>Global variables</h1>
   <div id="variables">
     ${store.snapshot().variables.map(variable => {
       return `<conf-variable variable="${variable.name}" value="${variable.value}"></conf-variable>`

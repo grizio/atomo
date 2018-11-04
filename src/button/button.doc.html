@@ -1,0 +1,263 @@
+<section aria-labelledby="atomo-button">
+  <h2 id="atomo-button">Button</h2>
+
+  <p>
+    Represents a clickable element to trigger a specific action.
+  </p>
+
+  <h3>How to configure it</h3>
+
+  <h4>Types of buttons</h4>
+
+  <p>
+    Before configuring the component, list all types of buttons you have in your application.
+    Here some examples (non-exhaustive):
+  </p>
+
+  <ul>
+    <li>Submit</li>
+    <li>Cancel</li>
+    <li>Previous</li>
+    <li>Next</li>
+    <li>Share</li>
+    <li>Add</li>
+    <li>Remove</li>
+    <li>Mute</li>
+  </ul>
+
+  <h4>States of buttons</h4>
+
+  <p>
+    Each type of button can have several states (non-exhaustive and some could be non-relevant in your case):
+  </p>
+
+  <ul>
+    <li>Default</li>
+    <li>
+      Manual states:
+      <ul>
+        <li>Disabled (when the button cannot be clicked <code>:disabled</code>)</li>
+        <li>Pressed (for buttons having two distinct states like a mute button, <code>[aria-pressed]</code>)</li>
+        <li>Error (when the action did not end well, <code>.error</code>)</li>
+        <li>Success (when the action did end well, <code>.success</code>)</li>
+        <li>Warning (when the action ended but with a warning, <code>.warning</code>)</li>
+      </ul>
+    </li>
+    <li>
+      Browser states:
+      <ul>
+        <li>Hover (non existing in phone and tablet, <code>:hover</code>)</li>
+        <li>Active (when clicking but not released, <code>:active</code>)</li>
+        <li>Focused (as an input, not always existing, <code>:focus</code>)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>
+    ⚠️ Technically, these states could be mixed in between the manual state and the browser state.
+    When implementing styles and behavior, be aware of these edge cases.
+    For instance, while your button is <em>pressed</em> (with toggle button), the user can <em>active</em> it too.
+    The choice of which style overrides the other is up to you.
+  </p>
+
+  <h4>Difference between <em>type</em> and <em>state</em></h4>
+
+  <p>
+    The difference between <em>type</em> and <em>state</em> could not be obvious.
+    However, there is a fundamental difference.
+  </p>
+
+  <p>
+    A type of button cannot change during the use of the application.
+    The <em>next</em> button will always be the <em>next</em> button.
+    It cannot transform into a <em>previous</em> or <em>share</em> button.
+  </p>
+
+  <p>
+    However, its state can change.
+    The <em>next</em> button can be <em>disabled</em> while the form is invalid.
+    Then it becomes <em>active</em> and once the form sent, be <em>error</em> or <em>success</em> depending on the
+    result.
+  </p>
+
+  <p>
+    Said simply: the <em>type</em> never change but the <em>state</em> does.
+  </p>
+
+  <h4>In this project</h4>
+
+  <p>
+    We determined two categories for buttons: <code>text-button</code> and <code>icon-button</code>.
+    The first one will be used for text buttons with an optional icon and the other for icon-only buttons.
+    This choice could be convenient or not to you.
+  </p>
+
+  <p>
+    To add types in the text categories, go to <code>button/api.ts</code> and change <code>textButtonTypes</code>.
+    For the icon category, the code directly uses <code>iconTypes</code> from <code>icon/api.ts</code>.
+  </p>
+
+  <p>
+    To add states in all categories, go to <code>button/api.ts</code> and change <code>states</code>.
+  </p>
+
+  <p>
+    To change the style of the button, look at <code>AtomoTextButton.renderStyles</code> and <code>AtomoIconButton.renderStyles</code>.
+  </p>
+
+  <p>
+    Available css variables are the following:
+  </p>
+
+  <ul>
+    <li><code>--cursor</code></li>
+    <li><code>--border-radius</code></li>
+    <li><code>--padding</code></li>
+    <li><code>--font-weight</code></li>
+    <li><code>--font-size</code></li>
+    <li><code>--transition</code></li>
+    <li><code>--{type}-background</code>: Background color in normal state</li>
+    <li><code>--{type}-color</code>: Text color in normal state</li>
+    <li><code>--{type}-border</code>: Border in normal state</li>
+    <li><code>--{type}-background-{state}</code>: Background color in {state} state</li>
+    <li><code>--{type}-color-{state}</code>: Text color in {state} state</li>
+    <li><code>--{type}-border-{state}</code>: Border in {state} state</li>
+  </ul>
+
+  <p>
+    Update the code with your own needs for more control.
+  </p>
+
+  <h3>Internationalization</h3>
+
+  <p>
+    If you want to use or update the component, think about:
+  </p>
+
+  <ul>
+    <li>Colors: The meaning per country and region</li>
+    <li>Icons and their position: In left-to-right texts, right-to-left texts…</li>
+    <li>Labels (shown and hidden)</li>
+  </ul>
+
+  <h3>Accessibility</h3>
+
+  <p>
+    If you want to use or update the component, think about:
+  </p>
+
+  <ul>
+    <li>
+      A label for button without text
+      (ex: for screen readers,
+      a <code>title</code> attribute could be enough using firefox dev tools but need confirmation)
+    </li>
+    <li>Colors and contrast of buttons (ex: for people with visual disabilities)</li>
+    <li>Discriminants for different button types (ex: different colors for colorblind people)</li>
+    <li>Size of button (ex: mobiles)</li>
+    <li>Usage of html attributes (<code>disabled</code>, <code>type</code>)</li>
+  </ul>
+
+  <h3>Best practices</h3>
+
+  <div class="row">
+    <div class="col">
+      <h3 class="do">Do</h3>
+
+      <h4 class="do">One component per category</h4>
+
+      <p>
+        Like done with <code>atomo-button</code>, you can have one button component per category.
+        For instance, you can have a <code>text-button</code> and an <code>icon-button</code>.
+        Each category will render the button in some way that could be very different from one another.
+        It will differs from <code>type</code> which styles will be small enough.
+      </p>
+
+      <p>
+        For instance, the <code>icon-button</code> could hide the label (but keep it for accessibility reasons) and have
+        a circular form.
+        Then the type could define the shown icon and its background-color.
+      </p>
+
+      <p>
+        On the contrary, the <code>text-button</code> could always show the label, have an optional icon and have a
+        rectangular form.
+        Then the type could define the color and background-color and the icon to show.
+      </p>
+
+      <h4 class="do">Use specific names</h4>
+
+      <p>
+        Usage of specific names like <code>submis</code> or <code>cancel</code> gives more information of how to use them.
+        Use them and multiply them, it will simplify the decision of a type or state for future developer.
+      </p>
+
+      <p>
+        Framework often use terms like <code>primary</code> and <code>secondary</code>.
+        If they have meanings for you, keep them.
+        Otherwise, do not hesitate to change them to names that have meaning for your project.
+      </p>
+    </div>
+
+    <div class="col">
+      <h3 class="dont">Don't</h3>
+
+      <h4 class="dont">Give the possibility to add an external class name</h4>
+
+      <p>
+        If you give this possibility, developers will use it and duplicate logic.
+        Also, it will bring inconsistency in you application.
+      </p>
+
+      <p>
+        If a button need a specific style, check if it enters in a defined category and if a type can be defined.
+        In the other case, check if it is a new category and other buttons enter into it.
+      </p>
+
+      <p>
+        Prefer checking with a designer before adding a type of button.
+        It could be a mistake or a new notion that could be made explicit.
+      </p>
+
+      <h4 class="dont">Use a button as a link</h4>
+
+      <p>
+        Do not use a <code>button</code> that should behave like a link (<code>&lt;a&gt;</code>).
+        A button means doing an action and a link means going to a page.
+        An action can redirect to a page but as a side effect of the action, not as the objective.
+      </p>
+
+      <p>
+        If you need a link rendered as a button, create a new component using to use html <code>&lt;a&gt;</code>.
+        Whether you define this component as a button or a link is your choice.
+        However, the technical element should remains semantically valid.
+      </p>
+    </div>
+  </div>
+
+  <h3>Links</h3>
+
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button</a></li>
+    <li><a href="https://www.w3.org/WAI/tutorials/forms/labels/#labelling-buttons">https://www.w3.org/WAI/tutorials/forms/labels/#labelling-buttons</a></li>
+  </ul>
+
+  <h3>Example</h3>
+
+  <h4>Text buttons</h4>
+
+  <atomo-text-button type="submit" state="normal" label="Cancel"></atomo-text-button>
+  <atomo-text-button type="cancel" state="normal" label="Add" left-icon="plus"></atomo-text-button>
+  <atomo-text-button type="previous" state="normal" label="Add" right-icon="plus"></atomo-text-button>
+  <atomo-text-button type="next" state="normal" label="Add" left-icon="plus" right-icon="plus"></atomo-text-button>
+  <atomo-text-button type="submit" state="disabled" label="disabled"></atomo-text-button>
+
+  ${require('./text-button.conf.html')}
+
+  <h4>Icon buttons</h4>
+
+  <atomo-icon-button type="plus" state="normal" label="Add something"></atomo-icon-button>
+  <atomo-icon-button type="plus" state="disabled" label="Add something"></atomo-icon-button>
+
+  ${require('./icon-button.conf.html')}
+</section>

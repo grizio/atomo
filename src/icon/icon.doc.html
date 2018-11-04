@@ -1,0 +1,97 @@
+<section aria-labelledby="atomo-icon">
+  <h2 id="atomo-icon">Icon</h2>
+
+  <p>Shows an icon with different sizes</p>
+
+  <h3>How to configure it</h3>
+
+  <h4>Sizes</h4>
+
+  <p>
+    Update type <code>IconSize</code> in <code>icon/api.ts</code> with your own list of sizes.
+    Then update the mapping <code>sizes</code> in <code>icon/icon.ts</code>.
+  </p>
+
+  <h4>Icon format</h4>
+
+  <p>
+    Sometimes, you can have several formats for your icon (white / black, primary / secondary, …).
+    You can either declare the variants as a different type (ex: <code>&lt;icon type="plus-white"&gt;</code>)
+    or as a type with a variant (ex: <code>&lt;icon type="plus" variant="white"&gt;</code>).
+  </p>
+
+  <h4>Declaration of icons</h4>
+
+  <p>
+    This project uses a simple javascript function returning a <code>svg</code> element (with <code>lit-html</code>).
+    However, it is not an obligation and will depends on several causes (tooling, technical format of the icon, …).
+  </p>
+
+  <h3>Internationalization</h3>
+
+  <p>
+    If you want to use or update the component, think about:
+  </p>
+
+  <ul>
+    <li>Colors and forms: The meaning per country and region</li>
+    <li>Give a translated title and a description to your icon</li>
+    <li>Avoid using icons without another text to describe them (or make the context explicit)</li>
+  </ul>
+
+  <h3>Accessibility</h3>
+
+  <p>
+    If you want to use or update the component, think about:
+  </p>
+
+  <ul>
+    <li>Clear label and description for your icon (title and description in svg, alt text for image)</li>
+    <li>Colors and contrast of icons and their usage in other components (ex: buttons)</li>
+    <li>Size of the icon</li>
+    <li>Having icon different enough to avoid confusion</li>
+  </ul>
+
+  <h3>Best practices</h3>
+
+  <div class="row">
+    <div class="col">
+      <h3 class="do">Do</h3>
+
+      <h4 class="do">Prefer SVG</h4>
+
+      <p>
+        Prefer SVG over other formats.
+        You can give information like a title and a description readable by screen readers.
+        They can be stylized with css without be forced to create another file.
+        Also, they often end up having a lower size.
+      </p>
+    </div>
+
+    <div class="col">
+      <h3 class="dont">Don't</h3>
+
+      <h4 class="dont">Replace all texts with icons</h4>
+
+      <p>
+        Icons give graphical information and help with people with dyslexia.
+        However, they also remove clear information that a text can bring.
+        Prefer having both (icon and text) instead of only icons.
+      </p>
+    </div>
+  </div>
+
+  <h3>Example</h3>
+
+  <atomo-icon type="plus" size="small" description="Add nothing for the example"></atomo-icon>
+  <atomo-icon type="plus" size="medium" description="Add nothing for the example"></atomo-icon>
+  <atomo-icon type="plus" size="large" description="Add nothing for the example"></atomo-icon>
+
+  ${require('./icon.conf.html')}
+
+  <h3>Links</h3>
+
+  <ul>
+    <li><a href="https://www.w3.org/WAI/tutorials/images/">https://www.w3.org/WAI/tutorials/images/</a></li>
+  </ul>
+</section>

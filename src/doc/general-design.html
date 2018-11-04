@@ -1,0 +1,81 @@
+<section aria-labelledby="general-design">
+  <h2 id="general-design">General design</h2>
+
+  <p>
+    When designing components, following general rules applies.
+  </p>
+
+  <h3>Be as restrictive as possible</h3>
+
+  <p>
+    Give the least possibilities to the developer to change the component.
+    As soon as you give them some freedom, they will take it and transform the logic of the component.
+  </p>
+
+  <p>
+    For instance, imagine a <code>button</code> component.
+    You accept a <code>&lt;slot&gt;</code> for the content of the component.
+    Also, you accept a <code>class</code> attribute so the developer can style the button as s·he wants.
+    What will happen?
+  </p>
+
+  <p>
+    Some structure will be duplicated (ex: button with icon, colors, sizes) and not always the same way.
+    Even though some developers will try to factorize button styles, there will always a case where it is not done
+    right.
+    When you would want to change some style, you will end up changing the whole application.
+  </p>
+
+  <p>
+    To avoid this case, the only thing to do is to restrict the developer.
+  </p>
+
+  <p>
+    And by doing so, you also force the designer to be aware of the restriction.
+    When the developer will have an impossibility to make changes without changing the component,
+    it will be an alert to check whether the design is coherent with the existing.
+    And if so, the component should be rethought.
+  </p>
+
+  <p>
+    Only when an abstraction can be made and a restrictive one, you can update the component to accept this abstraction.
+    For example, our button can be an <code>icon-button</code> but the <code>icon</code> name can be given by the
+    parent.
+  </p>
+
+  <h3>Use of css-variables</h3>
+
+  <p>
+    We use a lot of css-variables.
+    Not because they are cool (even if they are) but because they help to define several stylesheets.
+  </p>
+
+  <p>
+    For instance, if you want to see with your designer the configuration of the component,
+    you can use a simple UI-kit like <code>uikit.html</code>.
+    Also, if you want to define several stylesheets (day/night modes, accessibility mode, …),
+    it will be easier to have all your variables in a global definition.
+  </p>
+
+  <p>
+    Of course, these exist for specific use case and can be simplified or extended depending on your own needs.
+    They mainly exist for demonstration purpose.
+  </p>
+
+  <h3>Lots of configurations</h3>
+
+  <p>
+    In this page, you will surely think that each component have lots of configurations (and too many).
+    The reason behind it it to show the developer and designer all cases to take into account.
+    In your final application, maybe you will only make little variables configurable.
+  </p>
+
+  <p>
+    This repository exists to help you create your UI-kit,
+    so the final components should be simpler in terms of configuration.
+  </p>
+
+  <p>
+    However, if you need several stylesheets (eg: night mode), please take into account all cases too.
+  </p>
+</section>

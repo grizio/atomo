@@ -16,7 +16,10 @@ module.exports = {
         use: [
           {
             loader: "html-loader",
-            options: {minimize: true}
+            options: {
+              minimize: true,
+              interpolate: true
+            }
           }
         ]
       }
@@ -43,10 +46,6 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    }),
-    new HtmlWebPackPlugin({
-      template: "./src/uikit.html",
-      filename: "./uikit.html"
     })
   ]
 }

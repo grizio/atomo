@@ -1,54 +1,7 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>UI kit</title>
+<details>
+  <summary>Expand configuration</summary>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i" rel="stylesheet">
-  <style>
-    html, body {
-      width: 1200px;
-      margin: auto;
-      font-family: 'Roboto', Arial, sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    .example {
-      margin: 1.5rem 0;
-    }
-
-    .variables {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: start;
-    }
-
-    .variables > * {
-      width: 50%;
-    }
-  </style>
-</head>
-<body>
-
-<button id="reset">Reset all styles</button>
-
-<h1>Summary</h1>
-
-<nav>
-  <ul>
-    <li><a href="#global-variables">Global variables</a></li>
-    <li><a href="#atomo-text-button">atomo-text-button</a></li>
-    <li><a href="#atomo-input-text">atomo-input-text</a></li>
-  </ul>
-</nav>
-
-<conf-variables id="global-variables"></conf-variables>
-
-<conf-atomo atomo="atomo-text-button" id="atomo-text-button">
-  <h2>Main variables (applies to all types)</h2>
+  <h5>Main variables (applies to all button types)</h5>
 
   <div class="variables">
     <conf-field type="text" atomo="atomo-text-button" variable="--cursor"></conf-field>
@@ -59,7 +12,7 @@
     <conf-field type="text" atomo="atomo-text-button" variable="--transition"></conf-field>
   </div>
 
-  <h2>Submit button</h2>
+  <h5>Submit button</h5>
 
   <div class="example">
     <atomo-text-button type="submit" state="normal" label="normal"></atomo-text-button>
@@ -68,42 +21,42 @@
     <atomo-text-button type="submit" state="disabled" label="normal" right-icon="plus"></atomo-text-button>
   </div>
 
-  <h3>Base</h3>
+  <h6>Base</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-background"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-color"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--submit-border"></conf-field>
   </div>
 
-  <h3>Disabled</h3>
+  <h6>Disabled</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-disabled"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-disabled"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-disabled"></conf-field>
   </div>
 
-  <h3>Hover</h3>
+  <h6>Hover</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-hover"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-hover"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-hover"></conf-field>
   </div>
 
-  <h3>Active</h3>
+  <h6>Active</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-active"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-active"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-active"></conf-field>
   </div>
 
-  <h3>Focus</h3>
+  <h6>Focus</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-background-focus"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--submit-color-focus"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--submit-border-focus"></conf-field>
   </div>
 
-  <h2>Cancel button</h2>
+  <h5>Cancel button</h5>
 
   <div class="example">
     <atomo-text-button type="cancel" state="normal" label="cancel"></atomo-text-button>
@@ -112,42 +65,42 @@
     <atomo-text-button type="cancel" state="disabled" label="cancel" right-icon="plus"></atomo-text-button>
   </div>
 
-  <h3>Base</h3>
+  <h6>Base</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border"></conf-field>
   </div>
 
-  <h3>Disabled</h3>
+  <h6>Disabled</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background-disabled"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color-disabled"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border-disabled"></conf-field>
   </div>
 
-  <h3>Hover</h3>
+  <h6>Hover</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background-hover"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color-hover"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border-hover"></conf-field>
   </div>
 
-  <h3>Active</h3>
+  <h6>Active</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background-active"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color-active"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border-active"></conf-field>
   </div>
 
-  <h3>Focus</h3>
+  <h6>Focus</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-background-focus"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--cancel-color-focus"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--cancel-border-focus"></conf-field>
   </div>
 
-  <h2>Previous button</h2>
+  <h5>Previous button</h5>
 
   <div class="example">
     <atomo-text-button type="previous" state="normal" label="previous"></atomo-text-button>
@@ -156,42 +109,42 @@
     <atomo-text-button type="previous" state="disabled" label="previous" right-icon="plus"></atomo-text-button>
   </div>
 
-  <h3>Base</h3>
+  <h6>Base</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-background"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-color"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--previous-border"></conf-field>
   </div>
 
-  <h3>Disabled</h3>
+  <h6>Disabled</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-background-disabled"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-color-disabled"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--previous-border-disabled"></conf-field>
   </div>
 
-  <h3>Hover</h3>
+  <h6>Hover</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-background-hover"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-color-hover"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--previous-border-hover"></conf-field>
   </div>
 
-  <h3>Active</h3>
+  <h6>Active</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-background-active"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-color-active"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--previous-border-active"></conf-field>
   </div>
 
-  <h3>Focus</h3>
+  <h6>Focus</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-background-focus"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--previous-color-focus"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--previous-border-focus"></conf-field>
   </div>
 
-  <h2>Next button</h2>
+  <h5>Next button</h5>
 
   <div class="example">
     <atomo-text-button type="next" state="normal" label="next"></atomo-text-button>
@@ -200,154 +153,38 @@
     <atomo-text-button type="next" state="disabled" label="next" right-icon="plus"></atomo-text-button>
   </div>
 
-  <h3>Base</h3>
+  <h6>Base</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--next-background"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--next-color"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--next-border"></conf-field>
   </div>
 
-  <h3>Disabled</h3>
+  <h6>Disabled</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--next-background-disabled"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--next-color-disabled"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--next-border-disabled"></conf-field>
   </div>
 
-  <h3>Hover</h3>
+  <h6>Hover</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--next-background-hover"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--next-color-hover"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--next-border-hover"></conf-field>
   </div>
 
-  <h3>Active</h3>
+  <h6>Active</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--next-background-active"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--next-color-active"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--next-border-active"></conf-field>
   </div>
 
-  <h3>Focus</h3>
+  <h6>Focus</h6>
   <div class="variables">
     <conf-field type="color" atomo="atomo-text-button" variable="--next-background-focus"></conf-field>
     <conf-field type="color" atomo="atomo-text-button" variable="--next-color-focus"></conf-field>
     <conf-field type="text" atomo="atomo-text-button" variable="--next-border-focus"></conf-field>
   </div>
-</conf-atomo>
-
-<conf-atomo atomo="atomo-input-text" id="atomo-input-text">
-  <h2>Input text</h2>
-
-  <atomo-input-text
-    id="input-text-1"
-    name="test-1"
-    label="Field 1"
-    state="normal"
-    placeholder="First field"
-  ></atomo-input-text>
-
-  <atomo-input-text
-    id="input-text-2"
-    name="test-2"
-    label="Field 2"
-    state="error"
-    placeholder="Second field"
-  ></atomo-input-text>
-
-  <atomo-input-text
-    id="input-text-3"
-    name="test-3"
-    label="Field 3"
-    state="disabled"
-    placeholder="Third field"
-    value="Some text disabled"
-  ></atomo-input-text>
-
-  <atomo-input-text
-    id="input-text-4"
-    name="test-4"
-    label="Field 4"
-    state="readonly"
-    placeholder="Fourth field"
-    value="Some text read only"
-  ></atomo-input-text>
-
-  <h3>Base</h3>
-  <div class="variables">
-    <conf-field type="color" atomo="atomo-input-text" variable="--background-color"></conf-field>
-    <conf-field type="text" atomo="atomo-input-text" variable="--border"></conf-field>
-    <conf-field type="size" atomo="atomo-input-text" variable="--border-radius"></conf-field>
-    <conf-field type="color" atomo="atomo-input-text" variable="--color"></conf-field>
-    <conf-field type="size" atomo="atomo-input-text" variable="--font-size"></conf-field>
-    <conf-field type="size" atomo="atomo-input-text" variable="--margin"></conf-field>
-    <conf-field type="size" atomo="atomo-input-text" variable="--padding"></conf-field>
-    <conf-field type="text" atomo="atomo-input-text" variable="--transition"></conf-field>
-  </div>
-
-  <h3>Hover</h3>
-  <div class="variables">
-    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-hover"></conf-field>
-    <conf-field type="text" atomo="atomo-input-text" variable="--border-hover"></conf-field>
-    <conf-field type="color" atomo="atomo-input-text" variable="--color-hover"></conf-field>
-  </div>
-
-  <h3>Focus</h3>
-  <div class="variables">
-    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-focus"></conf-field>
-    <conf-field type="text" atomo="atomo-input-text" variable="--border-focus"></conf-field>
-    <conf-field type="color" atomo="atomo-input-text" variable="--color-focus"></conf-field>
-  </div>
-
-  <h3>Error</h3>
-
-  <atomo-input-text
-    id="input-text-2"
-    name="test-2"
-    label="Field 2"
-    state="error"
-    placeholder="Second field"
-  ></atomo-input-text>
-
-  <div class="variables">
-    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-error"></conf-field>
-    <conf-field type="text" atomo="atomo-input-text" variable="--border-error"></conf-field>
-    <conf-field type="color" atomo="atomo-input-text" variable="--color-error"></conf-field>
-  </div>
-
-  <h3>Disabled</h3>
-
-  <atomo-input-text
-    id="input-text-3"
-    name="test-3"
-    label="Field 3"
-    state="disabled"
-    placeholder="Third field"
-    value="Some text disabled"
-  ></atomo-input-text>
-
-  <div class="variables">
-    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-disabled"></conf-field>
-    <conf-field type="text" atomo="atomo-input-text" variable="--border-disabled"></conf-field>
-    <conf-field type="color" atomo="atomo-input-text" variable="--color-disabled"></conf-field>
-  </div>
-
-  <h3>Read only</h3>
-
-  <atomo-input-text
-    id="input-text-4"
-    name="test-4"
-    label="Field 4"
-    state="readonly"
-    placeholder="Fourth field"
-    value="Some text read only"
-  ></atomo-input-text>
-
-  <div class="variables">
-    <conf-field type="color" atomo="atomo-input-text" variable="--background-color-readonly"></conf-field>
-    <conf-field type="text" atomo="atomo-input-text" variable="--border-readonly"></conf-field>
-    <conf-field type="color" atomo="atomo-input-text" variable="--color-readonly"></conf-field>
-  </div>
-</conf-atomo>
-</body>
-</html>
+</details>
