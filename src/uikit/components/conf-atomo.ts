@@ -14,34 +14,11 @@ section {
   padding: 10px;
   margin: 15px 0;
 }
-
-.row {
-  display: flex;
-  width: 100%;
-}
-
-.left {
-  flex-grow: 1;
-}
-
-.right {
-  flex-basis: 500px;
-  border-left: 1px solid #cccccc;
-  padding-left: 15px;
-  margin-left: 15px;
-}
 </style>
-<section>
+<section aria-label="${this.getAttribute("atomo")}">
   <h1>${this.getAttribute("atomo")}</h1>
   
-  <div class="row">
-    <div class="left">
-      <slot name="left"></slot>
-    </div>
-    <div class="right">
-      <slot name="right"></slot>
-    </div>
-  </div>
+  <slot></slot>
 </section>
     `
   }
