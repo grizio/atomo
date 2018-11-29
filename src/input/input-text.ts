@@ -1,7 +1,7 @@
 import * as CSS from "csstype"
-import AtomoElement from "helpers/AtomoElement"
+import AtomoLitElement from "helpers/AtomoLitElement"
+import { enumeration, number, required, string } from 'helpers/normalizers'
 import {html} from "lit-html"
-import {identity, number, required, requiredEnumeration} from "../helpers/normalizers"
 import {Declaration, variable} from "../styles"
 
 import {TextInputProps, textInputStates} from "./api"
@@ -10,17 +10,17 @@ interface State {
   internalValue: string
 }
 
-export default class AtomoInputText extends AtomoElement<TextInputProps, State> {
+export default class AtomoInputText extends AtomoLitElement<TextInputProps, State> {
   constructor() {
     super({
       props: {
-        id: required(),
-        name: required(),
-        label: required(),
-        value: identity(),
-        placeholder: required(),
+        id: required(string()),
+        name: required(string()),
+        label: required(string()),
+        value: string(),
+        placeholder: required(string()),
         maxLength: number(),
-        state: requiredEnumeration(textInputStates, "normal")
+        state: required(enumeration(textInputStates), "normal")
       },
       state: props => ({
         internalValue: props.value || ""

@@ -7,7 +7,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/
       },
@@ -30,7 +30,7 @@ module.exports = {
       path.resolve('./src'),
       path.resolve('./node_modules')
     ],
-    extensions: [".ts"]
+    extensions: [".ts", ".tsx", ".js"]
   },
   output: {
     filename: "bundle.js",

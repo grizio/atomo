@@ -1,25 +1,29 @@
-import * as CSS from "csstype"
+import * as CSS from 'csstype'
 
-import AtomoElement from "helpers/AtomoElement"
-import {optionalEnumeration, required, requiredEnumeration} from "helpers/normalizers"
-import {html} from "lit-html"
-import {Declaration, variable} from "styles"
-import {Icon, iconTypes} from "../icon/api"
+import AtomoLitElement from 'helpers/AtomoLitElement'
+import { enumeration, required, string } from 'helpers/normalizers'
+import { html } from 'lit-html'
+import { Declaration, variable } from 'styles'
+import { Icon, iconTypes } from 'icon/api'
 
-import {ActionEvent, states, TextButtonProps, textButtonTypes} from "./api"
+import { ActionEvent, states, TextButtonProps, textButtonTypes } from './api'
 
-export default class AtomoTextButton extends AtomoElement<TextButtonProps, {}> {
+export default class AtomoTextButton extends AtomoLitElement<TextButtonProps, {}> {
   constructor() {
     super({
       props: {
-        type: requiredEnumeration(textButtonTypes),
-        state: requiredEnumeration(states),
-        label: required(),
-        leftIcon: optionalEnumeration(iconTypes),
-        rightIcon: optionalEnumeration(iconTypes)
+        type: required(enumeration(textButtonTypes)),
+        state: required(enumeration(states)),
+        label: required(string()),
+        leftIcon: enumeration(iconTypes),
+        rightIcon: enumeration(iconTypes)
       },
       state: {}
     })
+  }
+
+  static get observedAttributes() {
+    return ['type', 'state', 'label', 'leftIcon', 'rightIcon']
   }
 
   onAction() {

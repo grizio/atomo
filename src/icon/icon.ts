@@ -1,9 +1,9 @@
-import AtomoElement from "helpers/AtomoElement"
-import {identity, requiredEnumeration} from "helpers/normalizers"
-import {Declaration} from "../styles"
+import AtomoLitElement from 'helpers/AtomoLitElement'
+import { enumeration, required, string } from 'helpers/normalizers'
+import { Declaration } from 'styles'
 
-import {IconProps, IconSize, iconSizes, iconTypes} from "./api"
-import {icons} from "./icons";
+import { IconProps, IconSize, iconSizes, iconTypes } from './api'
+import { icons } from './icons'
 
 type Sizes = {
   [K in IconSize]: number
@@ -14,13 +14,13 @@ const sizes: Sizes = {
   large: 25
 }
 
-export default class AtomoIcon extends AtomoElement<IconProps, {}> {
+export default class AtomoIcon extends AtomoLitElement<IconProps, {}> {
   constructor() {
     super({
       props: {
-        type: requiredEnumeration(iconTypes),
-        description: identity(),
-        size: requiredEnumeration(iconSizes)
+        type: required(enumeration(iconTypes)),
+        description: string(),
+        size: required(enumeration(iconSizes))
       },
       state: {}
     })
