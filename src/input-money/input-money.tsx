@@ -1,7 +1,6 @@
 import AtomoPreactElement from 'helpers/AtomoPreactElement'
 import { h } from 'preact'
 import { Declaration } from 'styles'
-import { isKeyboardEvent } from 'utils/events'
 import { normalizePartialNumber } from 'utils/number'
 
 const currencySymbols: { [key in Currency]: string } = {
@@ -43,7 +42,6 @@ export default class AtomoInputMoney extends AtomoPreactElement<Props, State> {
           type="text"
           id="input"
           value={state.internalValue}
-          onKeyPress={this.onKeyPress}
           onInput={this.onInput}
         />
         <span>{currencySymbols[props.currency]}</span>
