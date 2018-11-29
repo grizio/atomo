@@ -3,12 +3,12 @@ import { h } from 'preact'
 import { Declaration } from 'styles'
 import { normalizePartialNumber } from 'utils/number'
 
+type Currency = 'euro' | 'dollar'
+
 const currencySymbols: { [key in Currency]: string } = {
   euro: '€',
   dollar: '$'
 }
-
-type Currency = 'euro' | 'dollar'
 
 interface Props {
   label: string
