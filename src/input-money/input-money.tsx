@@ -10,7 +10,7 @@ const currencySymbols: { [key in Currency]: string } = {
   dollar: '$'
 }
 
-interface Props {
+export interface Props {
   label: string
   value: number
   currency: Currency

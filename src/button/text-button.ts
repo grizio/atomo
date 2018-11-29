@@ -22,6 +22,10 @@ export default class AtomoTextButton extends AtomoElement<TextButtonProps, {}> {
     })
   }
 
+  static get observedAttributes() {
+    return ['type', 'state', 'label', 'leftIcon', 'rightIcon']
+  }
+
   onAction() {
     this.dispatchEvent(new ActionEvent())
   }

@@ -16,7 +16,7 @@ export default abstract class AtomoElement<Props extends {}, State extends {}> e
   private readonly shadow: ShadowRoot
   private readonly propsNormalizer: PropsNormalizer<Props>
   private readonly attributeListeners: AttributeListeners<Props>
-  private state: State
+  private _state: State
 
   protected constructor({props, state, attributeListeners}: {
     props: PropsNormalizer<Props>,
@@ -26,15 +26,15 @@ export default abstract class AtomoElement<Props extends {}, State extends {}> e
     super()
     this.shadow = this.attachShadow({mode: "open"})
     this.propsNormalizer = props
-    this.state = typeof state === "function" ? (state as Function)(this.getProps()) : state
+    this._state = typeof state === "function" ? (state as Function)(this.getProps()) : state
     this.attributeListeners = attributeListeners || {} as AttributeListeners<Props>
     this.doRender()
   }
 
   private doRender() {
     const props = this.getProps()
-    const declaration = this.renderStyles(props, this.state)
-    const body = this.render(props, this.state)
+    const declaration = this.renderStyles(props, this._state)
+    const body = this.render(props, this._state)
     const result = html`<style>${styles(declaration)}</style>${body}`
     render(result, this.shadow)
   }
@@ -59,7 +59,7 @@ export default abstract class AtomoElement<Props extends {}, State extends {}> e
   }
 
   protected setState(newState: State) {
-    this.state = newState
+    this._state = newState
     this.doRender()
   }
 
