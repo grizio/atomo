@@ -3,6 +3,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "jsxFactory": "h",
     "lib": [
       "dom",
       "esnext"

@@ -1,3 +1,4 @@
+import { getNormalizedAttributeName, getNormalizedPropName, normalizeAttribute } from 'helpers/normalizers'
 import {html, render, TemplateResult} from "lit-html"
 import {Declaration, styles} from "../styles"
 
@@ -41,36 +42,18 @@ export default abstract class AtomoElement<Props extends {}, State extends {}> e
   private getProps(): Props {
     const props: any = {}
     Object.keys(this.propsNormalizer).forEach(key => {
-      const attributeName = AtomoElement.getNormalizedAttributeName(key)
-      props[key] = this.normalizeAttribute(key, this.getAttribute(attributeName))
+      const attributeName = getNormalizedAttributeName(key)
+      props[key] = normalizeAttribute(this.propsNormalizer, key, this.getAttribute(attributeName))
     })
     return props as Props
   }
 
-  private normalizeAttribute(name: string, value: string | undefined | null) {
-    // @ts-ignore
-    const normalizer: Normalizer<any> = this.propsNormalizer[name]
-    if (normalizer) {
-      return normalizer(value === null ? undefined : value)
-    } else {
-      return value
-    }
-  }
-
-  private static getNormalizedAttributeName(attributeName: string): string {
-    return attributeName.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
-  }
-
-  private static getNormalizedPropName(propName: string): string {
-    return propName.replace(/-[a-z]/g, (match) => `${match.toUpperCase()}`)
-  }
-
   public attributeChangedCallback(name: string, _: string, newValue: string) {
-    const propName = AtomoElement.getNormalizedPropName(name)
+    const propName = getNormalizedPropName(name)
     // @ts-ignore
     const listener = this.attributeListeners[propName]
     if (listener) {
-      listener(this.normalizeAttribute(name, newValue))
+      listener(normalizeAttribute(this.propsNormalizer, name, newValue))
     }
     this.doRender()
   }

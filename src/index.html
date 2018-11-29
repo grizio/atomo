@@ -137,5 +137,14 @@ ${require('./doc/general-design.html')}
 ${require('./doc/global-variables.html')}
 ${require('./button/button.doc.html')}
 ${require('./icon/icon.doc.html')}
+${require('./input-money/input-money.doc.html')}
+
+<script>
+  setTimeout(() => {
+    Array.from(document.querySelectorAll('atomo-input-money')).forEach(inputMoney => {
+      inputMoney.setAttribute('value', '10.55')
+    })
+  }, 1000)
+</script>
 </body>
 </html>
