@@ -8,7 +8,9 @@ export function required<A>(normalizer: Normalizer<A | undefined>, fallback?: A)
         console.warn(`Attribute required but got undefined, fallback to ${fallback}`)
         return fallback
       } else {
-        throw 'Attribute required but got undefined. No fallback was given'
+        console.warn('Attribute required but got undefined. No fallback was given')
+        // @ts-ignore
+        return undefined as A
       }
     } else {
       return normalizedValue
