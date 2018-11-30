@@ -1,21 +1,21 @@
+import {
+  getNormalizedAttributeName,
+  getNormalizedPropName,
+  normalizeAttribute,
+  PropsNormalizer
+} from 'helpers/normalization'
 import {html, render, TemplateResult} from "lit-html"
-import {Declaration, styles} from "../styles"
-
-export type PropsNormalizer<P> = {
-  [K in keyof P]: Normalizer<P[K]>
-}
-
-export type Normalizer<A> = (value: string | undefined) => A
+import {Declaration, styles} from 'styles'
 
 type AttributeListeners<P> = {
   [K in keyof Partial<P>]: (listener: P[K]) => void
 }
 
-export default abstract class AtomoElement<Props extends {}, State extends {}> extends HTMLElement {
+export default abstract class AtomoLitElement<Props extends {}, State extends {}> extends HTMLElement {
   private readonly shadow: ShadowRoot
   private readonly propsNormalizer: PropsNormalizer<Props>
   private readonly attributeListeners: AttributeListeners<Props>
-  private state: State
+  private _state: State
 
   protected constructor({props, state, attributeListeners}: {
     props: PropsNormalizer<Props>,
@@ -25,15 +25,15 @@ export default abstract class AtomoElement<Props extends {}, State extends {}> e
     super()
     this.shadow = this.attachShadow({mode: "open"})
     this.propsNormalizer = props
-    this.state = typeof state === "function" ? (state as Function)(this.getProps()) : state
+    this._state = typeof state === "function" ? (state as Function)(this.getProps()) : state
     this.attributeListeners = attributeListeners || {} as AttributeListeners<Props>
     this.doRender()
   }
 
   private doRender() {
     const props = this.getProps()
-    const declaration = this.renderStyles(props, this.state)
-    const body = this.render(props, this.state)
+    const declaration = this.renderStyles(props, this._state)
+    const body = this.render(props, this._state)
     const result = html`<style>${styles(declaration)}</style>${body}`
     render(result, this.shadow)
   }
@@ -41,42 +41,24 @@ export default abstract class AtomoElement<Props extends {}, State extends {}> e
   private getProps(): Props {
     const props: any = {}
     Object.keys(this.propsNormalizer).forEach(key => {
-      const attributeName = AtomoElement.getNormalizedAttributeName(key)
-      props[key] = this.normalizeAttribute(key, this.getAttribute(attributeName))
+      const attributeName = getNormalizedAttributeName(key)
+      props[key] = normalizeAttribute(this.propsNormalizer, key, this.getAttribute(attributeName))
     })
     return props as Props
   }
 
-  private normalizeAttribute(name: string, value: string | undefined | null) {
-    // @ts-ignore
-    const normalizer: Normalizer<any> = this.propsNormalizer[name]
-    if (normalizer) {
-      return normalizer(value === null ? undefined : value)
-    } else {
-      return value
-    }
-  }
-
-  private static getNormalizedAttributeName(attributeName: string): string {
-    return attributeName.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
-  }
-
-  private static getNormalizedPropName(propName: string): string {
-    return propName.replace(/-[a-z]/g, (match) => `${match.toUpperCase()}`)
-  }
-
   public attributeChangedCallback(name: string, _: string, newValue: string) {
-    const propName = AtomoElement.getNormalizedPropName(name)
+    const propName = getNormalizedPropName(name)
     // @ts-ignore
     const listener = this.attributeListeners[propName]
     if (listener) {
-      listener(this.normalizeAttribute(name, newValue))
+      listener(normalizeAttribute(this.propsNormalizer, name, newValue))
     }
     this.doRender()
   }
 
   protected setState(newState: State) {
-    this.state = newState
+    this._state = newState
     this.doRender()
   }
 

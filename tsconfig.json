@@ -3,6 +3,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "jsxFactory": "h",
     "lib": [
       "dom",
       "esnext"
@@ -11,6 +13,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "build",
+    "paths": {
+      "react": ["typings/react"]
+    },
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
