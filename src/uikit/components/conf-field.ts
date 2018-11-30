@@ -1,13 +1,33 @@
 import {ChangeEvent} from "./conf-select-variable";
-import store from "../store";
+import store, { State } from '../store'
 
 class ConfField extends HTMLElement {
   private shadow: ShadowRoot
+  private _state?: State
+
+  public static get observedAttributes() {
+    return ['atomo', 'variable', 'type']
+  }
 
   constructor() {
     super()
 
     this.shadow = this.attachShadow({mode: "open"})
+    this.shadow.innerHTML = this.render()
+
+    this.refresh()
+
+    store.subscribe(state => {
+      this._state = state
+      this.applyConfigurationState()
+    })
+  }
+
+  public attributeChangedCallback() {
+    this.refresh()
+  }
+
+  private refresh() {
     this.shadow.innerHTML = this.render()
 
     this.shadow.querySelectorAll("input")
@@ -16,8 +36,12 @@ class ConfField extends HTMLElement {
     this.shadow.querySelectorAll("conf-select-variable")
       .forEach(input => input.addEventListener("change", event => this.onChangeVariable(event as ChangeEvent)))
 
-    store.subscribe(state => {
-      state.atomoj
+    this.applyConfigurationState()
+  }
+
+  private applyConfigurationState() {
+    if (this._state) {
+      this._state.atomoj
         .filter(_ => _.name === this.getAttribute("atomo"))
         .forEach(_ => {
           _.variables
@@ -34,7 +58,7 @@ class ConfField extends HTMLElement {
               }
             })
         })
-    })
+    }
   }
 
   onChangeValue(event: Event) {
