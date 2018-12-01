@@ -14,7 +14,7 @@ export interface Variable {
   variable?: string
 }
 
-interface Subscriber {
+export interface Subscriber {
   (state: State): void
 }
 
@@ -42,6 +42,10 @@ class Store {
   public subscribe(subscriber: Subscriber) {
     this.subscribers.push(subscriber)
     subscriber(this.state)
+  }
+
+  public unsubscribe(subscriber: Subscriber) {
+    this.subscribers = this.subscribers.filter(_ => _ !== subscriber)
   }
 
   public snapshot() {

@@ -101,9 +101,6 @@ export default class AtomoConfigurator extends AtomoPreactElement<Props, State> 
         color: 'white',
         resize: 'both'
       },
-      'summary': {
-        cursor: 'pointer'
-      },
       '.content': {
         overflow: 'auto',
         width: '300px',
@@ -116,6 +113,13 @@ export default class AtomoConfigurator extends AtomoPreactElement<Props, State> 
       details: {
         borderLeft: '5px solid #eee',
         paddingLeft: '5px'
+      },
+      'summary': {
+        cursor: 'pointer',
+        transition: 'all 0.2s ease-in-out'
+      },
+      'summary:hover': {
+        backgroundColor: '#ddd'
       }
     }
   }

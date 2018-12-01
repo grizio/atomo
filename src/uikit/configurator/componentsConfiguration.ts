@@ -1,3 +1,5 @@
+import {VariableType} from "uikit/components/conf-field"
+
 export interface ComponentConfiguration {
   atomo: string
   variables?: Array<VariableConfiguration>
@@ -11,7 +13,7 @@ export interface SectionConfiguration {
 }
 
 export interface VariableConfiguration {
-  type: 'color' | 'size' | 'text'
+  type: VariableType
   name: string
 }
 
@@ -40,12 +42,12 @@ function atomoTextButtonConfiguration(): ComponentConfiguration {
   return {
     atomo: 'atomo-text-button',
     variables: [
-      { type: 'text', name: 'cursor' },
-      { type: 'size', name: 'border-radius' },
-      { type: 'size', name: 'padding' },
-      { type: 'text', name: 'font-weight' },
-      { type: 'text', name: 'font-size' },
-      { type: 'text', name: 'transition' }
+      { type: 'cursor', name: 'cursor' },
+      { type: 'border-radius', name: 'border-radius' },
+      { type: 'padding', name: 'padding' },
+      { type: 'font-weight', name: 'font-weight' },
+      { type: 'font-size', name: 'font-size' },
+      { type: 'transition', name: 'transition' }
     ],
     sections: types.map(({ typeCode, typeLabel }) => ({
       label: typeLabel,
@@ -54,7 +56,7 @@ function atomoTextButtonConfiguration(): ComponentConfiguration {
         variables: <VariableConfiguration[]>[
           { type: 'color', name: `${typeCode}-background${ stateCode ? '-' + stateCode : '' }` },
           { type: 'color', name: `${typeCode}-color${ stateCode ? '-' + stateCode : '' }` },
-          { type: 'text', name: `${typeCode}-border${ stateCode ? '-' + stateCode : '' }` }
+          { type: 'border', name: `${typeCode}-border${ stateCode ? '-' + stateCode : '' }` }
         ]
       }))
     }))

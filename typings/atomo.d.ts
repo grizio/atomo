@@ -1,5 +1,6 @@
 import { TextButtonProps } from 'button/api'
 import { AtomoInputMoneyProps } from 'input-money'
+import {ChangeEvent} from "src/uikit/components/conf-select-variable"
 import { ConfFieldProps } from 'uikit/components'
 
 declare global {
@@ -9,6 +10,7 @@ declare global {
       'atomo-input-money': AtomoInputMoneyProps
 
       'conf-field': ConfFieldProps
+      "conf-select-variable": { id: string, onChange: (event: ChangeEvent) => void }
     }
   }
 }
